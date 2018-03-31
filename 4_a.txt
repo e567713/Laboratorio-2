@@ -1,0 +1,12 @@
+S0 = (False)
+G0 = (True)
+
+S1 = (Cielo=Soleado  and Temp=Templado and Humedad=Normal and Viento=Fuerte and Tmp.Agua=Agua and Tiempo=Sin Cambios)
+G1 = (True)
+
+
+S2 = (Cielo=Soleado  and Temp=Templado and Humedad=Normal and Viento=Fuerte and Tmp.Agua=Agua and Tiempo=Sin Cambios)
+		or
+	 (Cielo=Soleado  and Temp=Templado and Humedad=Alta and Viento=Fuerte and Tmp.Agua=Agua and Tiempo=Sin Cambios)
+G2 = (True)
+
