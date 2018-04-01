@@ -24,17 +24,27 @@ def entropy(data, target_attr):
     return data_entropy
 
 
-def information_gain(data, target_attr):
-    # Incompleto
-    data_splitted = {}
+def information_gain(data, attr, target_attr):
+    # Calcula la ganancia de información del atributo attr sobre el
+    # conjunto data.
 
+    data_subsets = {}
+    data_information_gain = 0.0
+
+    # Se divide el conjunto data en subconjuntos que tienen en común
+    # el valor del atributo attr.
     for instance in data:
-        if (instance[target_attr] in data_splitted):
-            data_splitted[instance[target_attr]].append(instance)
+        if (instance[attr] in data_subsets):
+            data_subsets[instance[attr]].append(instance)
         else:
-            data_splitted[instance[target_attr]] = [instance]
+            data_subsets[instance[attr]] = [instance]
 
-    return data_splitted
+    # Se calcula el valor de information gain según lo visto en teórico.
+    data_information_gain = entropy(data, target_attr)
+    for data_subset in data_subsets.values():
+        data_information_gain -= (len(data_subset) / len(data)) * \
+            entropy(data_subset, target_attr)
+    return data_information_gain
 
 
 def read_file(path):

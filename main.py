@@ -1,26 +1,38 @@
 import utils
 
+#########################
+# Ejercicio del teórico #
+#########################
+
 # Data set del teórico
 S = [
     {'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
-        'Humedad': 'Media', 'Humor Doc': 'Bueno', 'Salva': 'Yes'},
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
     {'Dedicacion': 'Baja', 'Dificultad': 'Media', 'Horario': 'Matutino',
-        'Humedad': 'Alta', 'Humor Doc': 'Malo', 'Salva': 'No'},
+        'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
     {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
-        'Humedad': 'Media', 'Humor Doc': 'Malo', 'Salva': 'Yes'},
+        'Humedad': 'Media', 'Humor Docente': 'Malo', 'Salva': 'Yes'},
     {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Matutino',
-        'Humedad': 'Alta', 'Humor Doc': 'Bueno', 'Salva': 'No'},
+        'Humedad': 'Alta', 'Humor Docente': 'Bueno', 'Salva': 'No'},
 ]
+
+S_entropy = utils.entropy(S, 'Salva')
+print('Entropía del conjunto S: ', S_entropy)
+
+S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva')
+print('Information gain del atributo Dedicación: ', S_information_gain)
+S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva')
+print('Information gain del atributo Humor Docente: ', S_information_gain)
+S_information_gain = utils.information_gain(S, 'Horario', 'Salva')
+print('Information gain del atributo Horario: ', S_information_gain)
+
+
+#############################################
+# Ejercicio con el data set del laboratorio #
+#############################################
 
 # Leemos data set del laboratorio
 data_set = utils.read_file('Autism-Adult-Data.arff')
-
-# Calculamos la entropía de ambos conjuntos
-S_entropy = utils.entropy(S, 'Salva')
+# Calculamos su entropía
 data_set_entropy = utils.entropy(data_set, 'Class/ASD')
-
 print(data_set_entropy)
-print(S_entropy)
-
-S_information_gain = utils.information_gain(S ,'Dedicacion')
-print(S_information_gain)
