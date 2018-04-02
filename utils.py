@@ -1,5 +1,6 @@
 import math
 from scipy.io import arff
+from collections import Counter
 
 
 def entropy(data, target_attr):
@@ -47,5 +48,37 @@ def information_gain(data, attr, target_attr):
     return data_information_gain
 
 
+def ID3_algorithm(data, attributes, target_attr):
+    # Voy poniendo los links de donde saco las cosas por si viaja algo fijarme
+
+    # Genera lista únicamente con los valores del target attribute.
+    #   https://stackoverflow.com/questions/25050311/extract-first-item-of-each-sublist-in-python
+    target_attr_values = [instance[target_attr] for instance in data]
+
+    # Si todas las instancias tienen el mismo valor → etiquetar con ese valor
+    #   https://stackoverflow.com/questions/3844801/check-if-all-elements-in-a-list-are-identical
+    if (target_attr_values[1:] == target_attr_values[:-1]):
+        return
+        {
+            'data': target_attr_values[0],
+            'childs': {}
+        }
+
+    # Si no me quedan atributos → etiquetar con el valor más común
+    elif not attributes:
+        return
+        {
+            'data': most_common(target_attr_values),
+            'childs': {}
+        }
+
+
 def read_file(path):
     return arff.loadarff(path)[0]
+
+
+def most_common(lst):
+    # Retorna el elemento más común dentro de la lista pasada por parámetro.
+    #   https://stackoverflow.com/questions/1518522/python-most-common-element-in-a-list
+    data = Counter(lst)
+    return max(lst, key=data.get)

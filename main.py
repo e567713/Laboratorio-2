@@ -26,7 +26,6 @@ print('Information gain del atributo Humor Docente: ', S_information_gain)
 S_information_gain = utils.information_gain(S, 'Horario', 'Salva')
 print('Information gain del atributo Horario: ', S_information_gain)
 
-
 #############################################
 # Ejercicio con el data set del laboratorio #
 #############################################
