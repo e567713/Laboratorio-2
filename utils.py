@@ -54,8 +54,14 @@ def ID3_algorithm(data, attributes, target_attr):
 
     # Genera lista únicamente con los valores del target attribute.
     #   https://stackoverflow.com/questions/25050311/extract-first-item-of-each-sublist-in-python
+    print('---------------------------------------------')
+    print('NUEVA LLAMADA')
+    print('Lista de atributos: ',attributes)
+    print('\n')
+    print('Conjutno de datos: ', data)
     target_attr_values = [instance[target_attr] for instance in data]
-
+    print('\n')
+    print('Cantidad de yes o nos en data: ',target_attr_values)
     # Si todas las instancias tienen el mismo valor → etiquetar con ese valor.
     #   https://stackoverflow.com/questions/3844801/check-if-all-elements-in-a-list-are-identical
     if (target_attr_values[1:] == target_attr_values[:-1]):
@@ -75,13 +81,13 @@ def ID3_algorithm(data, attributes, target_attr):
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos. 
         best_attr = get_best_attribute(data, attributes, target_attr)
-
+        print('Best ATTR: ', best_attr)
         # Se obtienen los valores que puede tomar el atributo best_attr.
         best_attr_values = [instance[best_attr] for instance in data]
 
         # Se genera un árbol con el atributo best_attr en su raíz.
         tree = {
-            'data': best_attr_values,
+            'data': best_attr,
             'childs': {}
         }
 
@@ -89,11 +95,11 @@ def ID3_algorithm(data, attributes, target_attr):
 
             # Nos quedamos con los ejemplos de data que tengan el valor
             # value para el atributo best_attribute.
-            filtered_data = [instance[best_attr] for instance in data if instance[best_attribute] == value]
+            filtered_data = [instance for instance in data if instance[best_attr] == value]
 
             # Si filtered_data es vacío → etiquetar con el valor más probable.
             if not filtered_data:
-                tree['childs']['value'] = {
+                tree['childs'][value] = {
                     'data': most_common(target_attr_values),
                     'childs': {}
                 }
@@ -101,10 +107,14 @@ def ID3_algorithm(data, attributes, target_attr):
             # Si filtered_data no es vacío
             else:
                 # Se quita a best_attr de la lista de atributos.
-                filtered_attributes = copy.deepcopy(attributes).remove(best_attr)
-                tree['childs']['value'] = ID3_algorithm(filtered_data, filtered_attributes, target_attr)
-
-            return tree
+                filtered_attributes= copy.deepcopy(attributes)
+                # print('COPIA: ', filtered_attributes)
+                # print('MEJOR ATTR: ', best_attr)
+                filtered_attributes.remove(best_attr)
+                # print('FILTRADA: ', filtered_attributes)
+                tree['childs'][value] = ID3_algorithm(filtered_data, filtered_attributes, target_attr)
+        print(tree)
+        return tree
 
 
 
@@ -120,10 +130,10 @@ def most_common(lst):
 
 def get_best_attribute(data, attributes, target_attr):
     max_ig = -1
-    att_max_ig = attributes[0]
-    for att in attributes:
-        ig = information_gain(data, attributes, target_attr)
+    attr_max_ig = attributes[0]
+    for attr in attributes:
+        ig = information_gain(data, attr, target_attr)
         if ig > max_ig:
             max_ig = ig
-            att_max_ig = att
-    return att_max_ig
+            attr_max_ig = attr
+    return attr_max_ig
