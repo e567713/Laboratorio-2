@@ -2,6 +2,7 @@ import math
 from scipy.io import arff
 from collections import Counter
 import copy
+import random
 
 
 def entropy(data, target_attr):
@@ -54,14 +55,8 @@ def ID3_algorithm(data, attributes, target_attr):
 
     # Genera lista únicamente con los valores del target attribute.
     #   https://stackoverflow.com/questions/25050311/extract-first-item-of-each-sublist-in-python
-    print('---------------------------------------------')
-    print('NUEVA LLAMADA')
-    print('Lista de atributos: ',attributes)
-    print('\n')
-    print('Conjutno de datos: ', data)
     target_attr_values = [instance[target_attr] for instance in data]
-    print('\n')
-    print('Cantidad de yes o nos en data: ',target_attr_values)
+
     # Si todas las instancias tienen el mismo valor → etiquetar con ese valor.
     #   https://stackoverflow.com/questions/3844801/check-if-all-elements-in-a-list-are-identical
     if (target_attr_values[1:] == target_attr_values[:-1]):
@@ -108,12 +103,8 @@ def ID3_algorithm(data, attributes, target_attr):
             else:
                 # Se quita a best_attr de la lista de atributos.
                 filtered_attributes= copy.deepcopy(attributes)
-                # print('COPIA: ', filtered_attributes)
-                # print('MEJOR ATTR: ', best_attr)
                 filtered_attributes.remove(best_attr)
-                # print('FILTRADA: ', filtered_attributes)
                 tree['childs'][value] = ID3_algorithm(filtered_data, filtered_attributes, target_attr)
-        print(tree)
         return tree
 
 
@@ -129,6 +120,10 @@ def most_common(lst):
     return max(lst, key=data.get)
 
 def get_best_attribute(data, attributes, target_attr):
+    # Elige el mejor atributo medido según la ganancia de información que brinda.
+    # Si existe más de un atributo con ganancia máxima para las condiciones dadas,
+    # se devuelve uno aleatorio entre ellos.
+    maximum_values_tied = []
     max_ig = -1
     attr_max_ig = attributes[0]
     for attr in attributes:
@@ -136,4 +131,8 @@ def get_best_attribute(data, attributes, target_attr):
         if ig > max_ig:
             max_ig = ig
             attr_max_ig = attr
-    return attr_max_ig
+            maximum_values_tied = []
+            maximum_values_tied.append(attr)
+        elif ig == max_ig:
+            maximum_values_tied.append(attr)
+    return random.choice(maximum_values_tied)
