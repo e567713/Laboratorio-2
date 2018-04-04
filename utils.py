@@ -137,3 +137,12 @@ def get_best_attribute(data, attributes, target_attr):
             max_ig = ig
             attr_max_ig = attr
     return attr_max_ig
+
+
+def print_tree(tree, attr, tab):
+    print(tab + attr)
+    if tree['childs']:
+        for key, value in tree['childs'].items():
+            print_tree(value, key, tab + '   ')
+    else:
+        print(tab + tree['data'])
