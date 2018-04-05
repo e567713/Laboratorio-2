@@ -76,7 +76,7 @@ def ID3_algorithm(data, attributes, target_attr):
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos. 
         best_attr = get_best_attribute(data, attributes, target_attr)
-        print('Best ATTR: ', best_attr)
+
         # Se obtienen los valores que puede tomar el atributo best_attr.
         best_attr_values = [instance[best_attr] for instance in data]
 
@@ -108,7 +108,6 @@ def ID3_algorithm(data, attributes, target_attr):
         return tree
 
 
-
 def read_file(path):
     return arff.loadarff(path)[0]
 
@@ -118,6 +117,7 @@ def most_common(lst):
     #   https://stackoverflow.com/questions/1518522/python-most-common-element-in-a-list
     data = Counter(lst)
     return max(lst, key=data.get)
+
 
 def get_best_attribute(data, attributes, target_attr):
     # Elige el mejor atributo medido según la ganancia de información que brinda.
@@ -136,3 +136,5 @@ def get_best_attribute(data, attributes, target_attr):
         elif ig == max_ig:
             maximum_values_tied.append(attr)
     return random.choice(maximum_values_tied)
+
+def 
