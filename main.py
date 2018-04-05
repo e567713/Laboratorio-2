@@ -7,7 +7,7 @@ import utils
 # Data set del teórico
 S = [
     {'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
-        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
     {'Dedicacion': 'Baja', 'Dificultad': 'Media', 'Horario': 'Matutino',
         'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
     {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
@@ -26,10 +26,13 @@ print('Information gain del atributo Humor Docente: ', S_information_gain)
 S_information_gain = utils.information_gain(S, 'Horario', 'Salva')
 print('Information gain del atributo Horario: ', S_information_gain)
 
-print(utils.ID3_algorithm(
+tree = utils.ID3_algorithm(
     S,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
-    'Salva'))
+    'Salva')
+
+print(tree)
+utils.print_tree(tree, tree['data'], None, True, '')
 #############################################
 # Ejercicio con el data set del laboratorio #
 #############################################
