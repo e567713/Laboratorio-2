@@ -7,7 +7,7 @@ import utils
 # Data set del teórico
 S = [
     {'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
-        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
     {'Dedicacion': 'Baja', 'Dificultad': 'Media', 'Horario': 'Matutino',
         'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
     {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
