@@ -31,7 +31,6 @@ tree = utils.ID3_algorithm(
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva')
 
-print(tree)
 utils.print_tree(tree, tree['data'], None, True, '')
 #############################################
 # Ejercicio con el data set del laboratorio #

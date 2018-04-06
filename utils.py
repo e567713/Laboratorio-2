@@ -42,6 +42,14 @@ def information_gain(data, attr, target_attr):
         else:
             data_subsets[instance[attr]] = [instance]
 
+    # Extension para valores faltantes, si search_all_S es true: se busca en todo el conjunto de entrenamiento,
+    # si no, se busca en las instancias que tengan el mismo resultado que la instancia con valor faltante
+    if '-' in data_subsets:
+        common_value = find_most_common_value_in_S(data_subsets, target_attr)
+        data_subsets[common_value].extend(data_subsets['-'])
+        data_subsets.pop('-', None)
+
+
     # Se calcula el valor de information gain según lo visto en teórico.
     data_information_gain = entropy(data, target_attr)
     for data_subset in data_subsets.values():
@@ -149,3 +157,24 @@ def print_tree(tree, attr, childIsSheet, first, tab):
                 print_tree(value, key, True, False, '   ' + tab[:len(tab)-3] + '  |--')
     else:
         print('   ' + tab[:len(tab)-3] + '  |--' + tree['data'])
+
+
+
+def find_most_common_value_in_S(instances, target_attr):
+    # Instances es un diccionario con key un valor del attributo y value un arreglo con la fila que contiene valor key
+    # EJ: {Alta: [{'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Nocturno', 'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'}]}
+    # Busca el valor más comun que toma el atributo en todo S
+    # Si existe más de un valor más comun, se devuelve uno aleatorio entre ellos.
+    maximum_keys_tied = []
+    max_quantity = -1
+    for key, value in instances.items():
+        if key != '-':
+            if len(value) > max_quantity:
+                max_quantity = len(value)
+                maximum_keys_tied = []
+                maximum_keys_tied.append(key)
+            elif len(value) == max_quantity:
+                maximum_keys_tied.append(key)
+    return random.choice(maximum_keys_tied)
+
+
