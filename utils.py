@@ -71,14 +71,14 @@ def ID3_algorithm(data, attributes, target_attr):
             'data': most_common(target_attr_values),
             'childs': {}
         }
-    
+
     # En caso contrario
     else:
-        # Se obtiene el atributo best_attr que mejor clasifica los ejemplos. 
+        # Se obtiene el atributo best_attr que mejor clasifica los ejemplos.
         best_attr = get_best_attribute(data, attributes, target_attr)
 
         # Se obtienen los valores que puede tomar el atributo best_attr.
-        best_attr_values = [instance[best_attr] for instance in data]
+        best_attr_values = set(instance[best_attr] for instance in data)
 
         # Se genera un árbol con el atributo best_attr en su raíz.
         tree = {
@@ -90,7 +90,8 @@ def ID3_algorithm(data, attributes, target_attr):
 
             # Nos quedamos con los ejemplos de data que tengan el valor
             # value para el atributo best_attribute.
-            filtered_data = [instance for instance in data if instance[best_attr] == value]
+            filtered_data = [
+                instance for instance in data if instance[best_attr] == value]
 
             # Si filtered_data es vacío → etiquetar con el valor más probable.
             if not filtered_data:
@@ -98,18 +99,19 @@ def ID3_algorithm(data, attributes, target_attr):
                     'data': most_common(target_attr_values),
                     'childs': {}
                 }
-            
+
             # Si filtered_data no es vacío
             else:
                 # Se quita a best_attr de la lista de atributos.
-                filtered_attributes= copy.deepcopy(attributes)
+                filtered_attributes = copy.deepcopy(attributes)
                 filtered_attributes.remove(best_attr)
-                tree['childs'][value] = ID3_algorithm(filtered_data, filtered_attributes, target_attr)
+                tree['childs'][value] = ID3_algorithm(
+                    filtered_data, filtered_attributes, target_attr)
         return tree
 
 
 def read_file(path):
-    return arff.loadarff(path)[0]
+    return arff.loadarff(path)
 
 
 def most_common(lst):
@@ -125,16 +127,120 @@ def get_best_attribute(data, attributes, target_attr):
     # se devuelve uno aleatorio entre ellos.
     maximum_values_tied = []
     max_ig = -1
-    attr_max_ig = attributes[0]
     for attr in attributes:
         ig = information_gain(data, attr, target_attr)
         if ig > max_ig:
             max_ig = ig
-            attr_max_ig = attr
             maximum_values_tied = []
             maximum_values_tied.append(attr)
         elif ig == max_ig:
             maximum_values_tied.append(attr)
     return random.choice(maximum_values_tied)
 
-def 
+
+def print_tree(tree, attr, childIsSheet, first, tab):
+    print(tab + attr)
+    if not childIsSheet and not first:
+        tab = '   ' + tab[:len(tab) - 3] + '  |--'
+        print(tab + tree['data'])
+    if tree['childs']:
+        for key, value in tree['childs'].items():
+            if value['childs']:
+                print_tree(value, key, False, False, '   ' +
+                           tab[:len(tab) - 3] + '  |--')
+            else:
+                print_tree(value, key, True, False, '   ' +
+                           tab[:len(tab) - 3] + '  |--')
+    else:
+        print('   ' + tab[:len(tab) - 3] + '  |--' + tree['data'])
+
+
+def ID3_algorithm_with_threshold(data, attributes, target_attr, numeric_attributes):
+    # Algoritmo ID3 extendido que divide el rango de valores posibles de los atributos
+    # numéricos en dos. (Utiliza un único threshold para cada atributo)
+
+    # Se cambian todos los valores de los atributos de tipo numeric
+    splitted_data = split_numeric_attributes(
+        copy.deepcopy(data), target_attr, numeric_attributes)
+
+    # Se llama la función ID3
+    return ID3_algorithm(splitted_data, attributes, target_attr)
+
+
+def split_numeric_attributes(data, target_attr, numeric_attributes):
+
+    for numeric_attr in numeric_attributes:
+        split_by_best_threshold(data, target_attr, numeric_attr)
+
+    return data
+
+
+def split_by_best_threshold(data, target_attr, numeric_attr):
+    thresholds = []
+
+    # Se ordenan los ejemplos en orden ascendente según los valores de numeric_attr.
+    sorted_data = sorted(data, key=lambda x: x[numeric_attr])
+    print("Ordena por: ", numeric_attr)
+    print(sorted_data[0][numeric_attr])
+    print(sorted_data[1][numeric_attr])
+    print(sorted_data[2][numeric_attr])
+    print(sorted_data[3][numeric_attr])
+    print(sorted_data[4][numeric_attr])
+    print(sorted_data[5][numeric_attr])
+    print(sorted_data[6][numeric_attr])
+    print(sorted_data[7][numeric_attr])
+    print(sorted_data[8][numeric_attr])
+    print(sorted_data[9][numeric_attr])
+
+    # Se recorre el conjunto data de a 2 elementos para encontrar posibles
+    # thresholds.
+    for i in range(0, len(sorted_data) - 1):
+        instance_1 = sorted_data[i]
+        instance_2 = sorted_data[i + 1]
+
+        # En caso de encontrar un posible candidato se almacena
+        if instance_1[target_attr] != instance_2[target_attr] and instance_1[numeric_attr] != instance_2[numeric_attr]:
+            thresholds.append(
+                (instance_1[numeric_attr] + instance_2[numeric_attr]) / 2)
+    print("Posibles thresholds")
+    print(thresholds)
+    # Se recorre la lista de posibles thresholds.
+    for threshold in thresholds:
+
+        # Se dividen los valores de numeric_attr según el threshold dado.
+        splitted_data = split_data(copy.deepcopy(data), numeric_attr, threshold)
+        print()
+        print('Threshold: ', threshold)
+
+        # Se busca el threshold que maximiza la ganancia de información.
+        maximum_thresholds_tied = []
+        max_ig = -1
+        ig = information_gain(splitted_data, numeric_attr, target_attr)
+        print("Ganancia: ", ig, " del threshold ", threshold)
+        if ig > max_ig:
+            max_ig = ig
+            maximum_thresholds_tied = []
+            maximum_thresholds_tied.append(splitted_data)
+        elif ig == max_ig:
+            maximum_thresholds_tied.append(splitted_data)
+
+    best_splitted_data = random.choice(maximum_thresholds_tied)
+
+    # Se setean los valores del conjunto de datos según los resultados obtenidos
+    # por el mejor threshold.
+    for i in range(len(data)):
+        data[i][numeric_attr] = best_splitted_data[i][numeric_attr]
+
+
+def split_data(data, numeric_attr, threshold):
+    new_key = numeric_attr + '>' + str(threshold)
+    print(new_key)
+
+    for instance in data:
+        if instance[numeric_attr] > threshold:
+            instance[numeric_attr] = 1
+        else:
+            instance[numeric_attr] = 0
+        
+    return data
+
