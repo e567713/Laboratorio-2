@@ -42,6 +42,13 @@ def information_gain(data, attr, target_attr):
         else:
             data_subsets[instance[attr]] = [instance]
 
+    # Extension para valores faltantes primer metodo
+    if '-' in data_subsets:
+        common_value = find_most_common_value_in_S(data_subsets, target_attr)
+        data_subsets[common_value].extend(data_subsets['-'])
+        data_subsets.pop('-', None)
+
+
     # Se calcula el valor de information gain según lo visto en teórico.
     data_information_gain = entropy(data, target_attr)
     for data_subset in data_subsets.values():
@@ -85,7 +92,6 @@ def ID3_algorithm(data, attributes, target_attr):
             'data': best_attr,
             'childs': {}
         }
-
         for value in best_attr_values:
 
             # Nos quedamos con los ejemplos de data que tengan el valor
@@ -163,12 +169,13 @@ def ID3_algorithm_with_threshold(data, attributes, target_attr, numeric_attribut
     splitted_data = split_numeric_attributes(
         copy.deepcopy(data), target_attr, numeric_attributes)
 
-    # Se llama la función ID3
+    # Se llama a la función ID3 ya implementada
     return ID3_algorithm(splitted_data, attributes, target_attr)
 
 
 def split_numeric_attributes(data, target_attr, numeric_attributes):
-
+    # Recorre los atributos numéricos cambiando sus posibles valores según 
+    # un salto calclulado.
     for numeric_attr in numeric_attributes:
         split_by_best_threshold(data, target_attr, numeric_attr)
 
@@ -176,22 +183,14 @@ def split_numeric_attributes(data, target_attr, numeric_attributes):
 
 
 def split_by_best_threshold(data, target_attr, numeric_attr):
+    # Calcula el mejor threshold para el atributo numérico numeric_attr
+    # midiendo según la gananacia de información.
+
     thresholds = []
 
     # Se ordenan los ejemplos en orden ascendente según los valores de numeric_attr.
     sorted_data = sorted(data, key=lambda x: x[numeric_attr])
-    print("Ordena por: ", numeric_attr)
-    print(sorted_data[0][numeric_attr])
-    print(sorted_data[1][numeric_attr])
-    print(sorted_data[2][numeric_attr])
-    print(sorted_data[3][numeric_attr])
-    print(sorted_data[4][numeric_attr])
-    print(sorted_data[5][numeric_attr])
-    print(sorted_data[6][numeric_attr])
-    print(sorted_data[7][numeric_attr])
-    print(sorted_data[8][numeric_attr])
-    print(sorted_data[9][numeric_attr])
-
+    
     # Se recorre el conjunto data de a 2 elementos para encontrar posibles
     # thresholds.
     for i in range(0, len(sorted_data) - 1):
@@ -202,21 +201,17 @@ def split_by_best_threshold(data, target_attr, numeric_attr):
         if instance_1[target_attr] != instance_2[target_attr] and instance_1[numeric_attr] != instance_2[numeric_attr]:
             thresholds.append(
                 (instance_1[numeric_attr] + instance_2[numeric_attr]) / 2)
-    print("Posibles thresholds")
-    print(thresholds)
+    
     # Se recorre la lista de posibles thresholds.
     for threshold in thresholds:
 
         # Se dividen los valores de numeric_attr según el threshold dado.
         splitted_data = split_data(copy.deepcopy(data), numeric_attr, threshold)
-        print()
-        print('Threshold: ', threshold)
-
+        
         # Se busca el threshold que maximiza la ganancia de información.
         maximum_thresholds_tied = []
         max_ig = -1
         ig = information_gain(splitted_data, numeric_attr, target_attr)
-        print("Ganancia: ", ig, " del threshold ", threshold)
         if ig > max_ig:
             max_ig = ig
             maximum_thresholds_tied = []
@@ -233,8 +228,10 @@ def split_by_best_threshold(data, target_attr, numeric_attr):
 
 
 def split_data(data, numeric_attr, threshold):
+    # Divide los valores del atributo numérico numeric_attr según
+    # el valor del threshold pasado por parámetro.
+
     new_key = numeric_attr + '>' + str(threshold)
-    print(new_key)
 
     for instance in data:
         if instance[numeric_attr] > threshold:
@@ -243,4 +240,22 @@ def split_data(data, numeric_attr, threshold):
             instance[numeric_attr] = 0
         
     return data
+
+def find_most_common_value_in_S(instances, target_attr):
+    # Instances es un diccionario con key un valor del attributo y value un arreglo con la fila que contiene valor key
+    # EJ: {Alta: [{'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Nocturno', 'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'}]}
+    # Busca el valor más comun que toma el atributo en todo S
+    # Si existe más de un valor más comun, se devuelve uno aleatorio entre ellos.
+    maximum_keys_tied = []
+    max_quantity = -1
+    for key, value in instances.items():
+        if key != '-':
+            if len(value) > max_quantity:
+                max_quantity = len(value)
+                maximum_keys_tied = []
+                maximum_keys_tied.append(key)
+            elif len(value) == max_quantity:
+                maximum_keys_tied.append(key)
+    return random.choice(maximum_keys_tied)
+
 
