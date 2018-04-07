@@ -42,8 +42,7 @@ def information_gain(data, attr, target_attr):
         else:
             data_subsets[instance[attr]] = [instance]
 
-    # Extension para valores faltantes, si search_all_S es true: se busca en todo el conjunto de entrenamiento,
-    # si no, se busca en las instancias que tengan el mismo resultado que la instancia con valor faltante
+    # Extension para valores faltantes primer metodo
     if '-' in data_subsets:
         common_value = find_most_common_value_in_S(data_subsets, target_attr)
         data_subsets[common_value].extend(data_subsets['-'])
@@ -84,16 +83,16 @@ def ID3_algorithm(data, attributes, target_attr):
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos. 
         best_attr = get_best_attribute(data, attributes, target_attr)
+        print()
         print('Best ATTR: ', best_attr)
         # Se obtienen los valores que puede tomar el atributo best_attr.
-        best_attr_values = [instance[best_attr] for instance in data]
+        best_attr_values = set(instance[best_attr] for instance in data)
 
         # Se genera un árbol con el atributo best_attr en su raíz.
         tree = {
             'data': best_attr,
             'childs': {}
         }
-
         for value in best_attr_values:
 
             # Nos quedamos con los ejemplos de data que tengan el valor
@@ -135,6 +134,8 @@ def get_best_attribute(data, attributes, target_attr):
     max_ig = -1
     for attr in attributes:
         ig = information_gain(data, attr, target_attr)
+        print()
+        print('information gain de ' + attr + ' ',ig)
         if ig > max_ig:
             max_ig = ig
             maximum_values_tied = []
