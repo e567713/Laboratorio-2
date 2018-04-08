@@ -34,7 +34,7 @@ S3 = [
         'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
     {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
         'Humedad': 'Media', 'Humor Docente': 'Malo', 'Salva': 'Yes'},
-    {'Dedicacion': 'Media', 'Dificultad': '-', 'Horario': 'Matutino',
+    {'Dedicacion': 'Media', 'Dificultad': '?', 'Horario': 'Matutino',
         'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
 ]
 
@@ -49,15 +49,15 @@ print('')
 S_entropy = utils.entropy(S, 'Salva')
 print('Entropía del conjunto: ', S_entropy)
 
-S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva')
+S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva', False)
 print('Information gain del atributo Dedicación: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva')
+S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva', False)
 print('Information gain del atributo Humor Docente: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Horario', 'Salva')
+S_information_gain = utils.information_gain(S, 'Horario', 'Salva', False)
 print('Information gain del atributo Horario: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Dificultad', 'Salva')
+S_information_gain = utils.information_gain(S, 'Dificultad', 'Salva', False)
 print('Information gain del atributo Dificultad: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Humedad', 'Salva')
+S_information_gain = utils.information_gain(S, 'Humedad', 'Salva', False)
 print('Information gain del atributo Humedad: ', S_information_gain)
 
 tree = utils.ID3_algorithm(
@@ -136,7 +136,7 @@ tree_2 = utils.ID3_algorithm_with_threshold(
     data_set,
     attributes,
     'Class/ASD',
-    ['age'])
+    ['age'], False)
 print()
 
 print('Utilizando gain ratio')
@@ -163,8 +163,6 @@ tree_5 = utils.ID3_algorithm(
     'Salva',
     False, True)
 # utils.print_tree(tree_5, tree_5['data'], None, True, '')
-    
-print('NO ANDAN LOS PRINTS PARA ÁRBOLES GENERADOS CON EL DATA SET DE LA LETRA')
 
 print('')
 print('')

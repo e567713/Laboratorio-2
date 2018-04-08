@@ -6,7 +6,7 @@ import random
 import numpy as np
 
 
-def ID3_algorithm(data, attributes, target_attr, use_information_gain, use_missing_values_second_method):
+def ID3_algorithm(data, attributes, target_attr, use_information_gain, use_missing_values_first_method):
     # Algoritmo ID3 básico.
 
     # Genera lista únicamente con los valores del target attribute.
@@ -30,7 +30,7 @@ def ID3_algorithm(data, attributes, target_attr, use_information_gain, use_missi
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos.
         best_attr = get_best_attribute(
-            data, attributes, target_attr, use_information_gain, use_missing_values_second_method)
+            data, attributes, target_attr, use_information_gain, use_missing_values_first_method)
 
         # Se obtienen los valores que puede tomar el atributo best_attr.
         best_attr_values = set(instance[best_attr] for instance in data)
@@ -60,7 +60,7 @@ def ID3_algorithm(data, attributes, target_attr, use_information_gain, use_missi
                 filtered_attributes = copy.deepcopy(attributes)
                 filtered_attributes.remove(best_attr)
                 tree['childs'][value] = ID3_algorithm(
-                    filtered_data, filtered_attributes, target_attr, use_information_gain, use_missing_values_second_method)
+                    filtered_data, filtered_attributes, target_attr, use_information_gain, use_missing_values_first_method)
         return tree
 
 
@@ -86,7 +86,7 @@ def entropy(data, target_attr):
     return data_entropy
 
 
-def information_gain(data, attr, target_attr):
+def information_gain(data, attr, target_attr, use_missing_values_first_method):
     # Calcula la ganancia de información del atributo attr sobre el
     # conjunto data.
 
@@ -102,10 +102,13 @@ def information_gain(data, attr, target_attr):
             data_subsets[instance[attr]] = [instance]
 
     # Extension para valores faltantes primer metodo
-    if '-' in data_subsets:
-        common_value = find_most_common_value_in_S(data_subsets, target_attr)
-        data_subsets[common_value].extend(data_subsets['-'])
-        data_subsets.pop('-', None)
+    if '?' in data_subsets:
+        if use_missing_values_first_method:
+            common_value = find_most_common_value_in_S(data_subsets, target_attr)
+            data_subsets[common_value].extend(data_subsets['?'])
+            data_subsets.pop('?', None)
+        else:
+            return information_gain_missing_values_second_method(data, attr, target_attr)
 
     # Se calcula el valor de information gain según lo visto en teórico.
     data_information_gain = entropy(data, target_attr)
@@ -126,7 +129,7 @@ def most_common(lst):
     return max(lst, key=data.get)
 
 
-def get_best_attribute(data, attributes, target_attr, use_information_gain, use_missing_values_second_method):
+def get_best_attribute(data, attributes, target_attr, use_information_gain, use_missing_values_first_method):
     # Elige el mejor atributo medido según la ganancia de información o según
     # el gain ratio dependiendo del valor del parametro booleano use_information_gain.
     # Si existe más de un atributo óptimo para las condiciones dadas,
@@ -135,11 +138,9 @@ def get_best_attribute(data, attributes, target_attr, use_information_gain, use_
     max_measure = -1
     for attr in attributes:
         if use_information_gain:
-            measure = information_gain(data, attr, target_attr)
-        elif use_missing_values_second_method:
-            measure = information_gain_missing_values_second_method(data, attr, target_attr)
+            measure = information_gain(data, attr, target_attr, use_missing_values_first_method)
         else:
-            measure = gain_ratio(data, attr, target_attr)
+            measure = gain_ratio(data, attr, target_attr, use_missing_values_first_method)
         if measure > max_measure:
             max_measure = measure
             maximum_values_tied = []
@@ -183,7 +184,7 @@ def find_most_common_value_in_S(instances, target_attr):
     maximum_keys_tied = []
     max_quantity = -1
     for key, value in instances.items():
-        if key != '-':
+        if key != '?':
             if len(value) > max_quantity:
                 max_quantity = len(value)
                 maximum_keys_tied = []
@@ -193,19 +194,19 @@ def find_most_common_value_in_S(instances, target_attr):
     return random.choice(maximum_keys_tied)
 
 
-def ID3_algorithm_with_threshold(data, attributes, target_attr, numeric_attributes):
+def ID3_algorithm_with_threshold(data, attributes, target_attr, numeric_attributes, use_missing_values_first_method):
     # Algoritmo ID3 extendido que divide el rango de valores posibles de los atributos
     # numéricos en dos. (Utiliza un único threshold para cada atributo)
 
     # Se cambian todos los valores de los atributos de tipo numeric
     splitted_data = split_numeric_attributes(
-        copy.deepcopy(data), target_attr, numeric_attributes)
+        copy.deepcopy(data), target_attr, numeric_attributes, use_missing_values_first_method)
 
     # Se llama a la función ID3 ya implementada con el conjunto de datos procesados.
     return ID3_algorithm(splitted_data, attributes, target_attr, True, False)
 
 
-def split_numeric_attributes(data, target_attr, numeric_attributes):
+def split_numeric_attributes(data, target_attr, numeric_attributes, use_missing_values_first_method):
     # Recorre los atributos numéricos cambiando sus posibles valores según
     # un salto calclulado.
 
@@ -239,7 +240,7 @@ def split_numeric_attributes(data, target_attr, numeric_attributes):
             # Se busca el threshold que maximiza la ganancia de información.
             maximum_thresholds_tied = []
             max_ig = -1
-            ig = information_gain(splitted_data, numeric_attr, target_attr)
+            ig = information_gain(splitted_data, numeric_attr, target_attr, use_missing_values_first_method)
             if ig > max_ig:
                 max_ig = ig
                 maximum_thresholds_tied = []
@@ -296,8 +297,8 @@ def split_information(data, attr):
     return attr_entropy
 
 
-def gain_ratio(data, attr, target_attr):
-    return  information_gain(data, attr, target_attr) / split_information(data, attr)
+def gain_ratio(data, attr, target_attr, use_missing_values_first_method):
+    return  information_gain(data, attr, target_attr, use_missing_values_first_method) / split_information(data, attr)
 
 def split_20_80(d):
     # Divide el conjunto de datos en dos subconjuntos, uno con el 80% de los datos
@@ -422,7 +423,7 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
         if (instance[attr] in data_subsets):
             data_subsets[instance[attr]].append(instance)
 
-            if instance[attr] != '-':
+            if instance[attr] != '?':
                 quantity_subsets[instance[attr]] += 1
                 i = exist_tuple(quantity_subsets_target_attr[instance[attr]], instance[target_attr])
                 if i == -1:
@@ -432,7 +433,7 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
         else:
             data_subsets[instance[attr]] = [instance]
 
-            if instance[attr] != '-':
+            if instance[attr] != '?':
                 quantity_subsets[instance[attr]] = 1
                 quantity_subsets_target_attr[instance[attr]] = [(1, instance[target_attr])]
             
@@ -443,13 +444,13 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
     # print()
     # print(quantity_subsets_target_attr)
     
-    if '-' in data_subsets:
+    if '?' in data_subsets:
         data_without_miss_value_instance = copy.deepcopy(data)
-        for instance in data_subsets['-']:
+        for instance in data_subsets['?']:
             data_without_miss_value_instance.remove(instance)
         for key, value in quantity_subsets.items():
-            quantity_subsets[key] += quantity_subsets[key] / len(data_without_miss_value_instance) * len(data_subsets['-'])
-            for instance in data_subsets['-']:
+            quantity_subsets[key] += quantity_subsets[key] / len(data_without_miss_value_instance) * len(data_subsets['?'])
+            for instance in data_subsets['?']:
                 i = exist_tuple(quantity_subsets_target_attr[key], instance[target_attr])
                 prop = len(data_subsets[key]) / len(data_without_miss_value_instance)
                 if i == -1:
