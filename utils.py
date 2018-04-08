@@ -150,10 +150,16 @@ def get_best_attribute(data, attributes, target_attr, use_information_gain, use_
 
 
 def print_tree(tree, attr, childIsSheet, first, tab):
-    print(tab + attr)
+    if type(attr).__name__ == 'bytes_':
+        print(tab , str(attr, 'utf-8'))
+    else:    
+        print(tab , attr)
     if not childIsSheet and not first:
         tab = '   ' + tab[:len(tab) - 3] + '  |--'
-        print(tab + tree['data'])
+        if type(tree['data']).__name__ == 'bytes_':
+            print(tab , str(tree['data'], 'utf-8'))
+        else:
+            print(tab , tree['data'])
     if tree['childs']:
         for key, value in tree['childs'].items():
             if value['childs']:
@@ -163,7 +169,10 @@ def print_tree(tree, attr, childIsSheet, first, tab):
                 print_tree(value, key, True, False, '   ' +
                            tab[:len(tab) - 3] + '  |--')
     else:
-        print('   ' + tab[:len(tab) - 3] + '  |--' + tree['data'])
+        if type(tree['data']).__name__ == 'bytes_':
+            print('   ' + tab[:len(tab) - 3] + '  |--' , str(tree['data'], 'utf-8'))
+        else:
+            print('   ' + tab[:len(tab) - 3] + '  |--' , tree['data'])
 
 
 def find_most_common_value_in_S(instances, target_attr):
