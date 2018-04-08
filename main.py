@@ -46,7 +46,8 @@ print('Information gain del atributo Horario: ', S_information_gain)
 tree = utils.ID3_algorithm(
     S,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
-    'Salva')
+    'Salva',
+    True)
 
 utils.print_tree(tree, tree['data'], None, True, '')
 
@@ -54,7 +55,8 @@ utils.print_tree(tree, tree['data'], None, True, '')
 tree2 = utils.ID3_algorithm(
     S2,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
-    'Salva')
+    'Salva',
+    True)
 
 # utils.print_tree(tree2, tree['data'], None, True, '')
 
@@ -129,7 +131,29 @@ tree_2 = utils.ID3_algorithm_with_threshold(
      'age_desc',
      'relation'],
     'Class/ASD',
-    ['age',
-     'result'])
+    ['age'])
 
+tree_3 = utils.ID3_algorithm(
+    data_set,
+    ['A1_Score',
+     'A2_Score',
+     'A3_Score',
+     'A4_Score',
+     'A5_Score',
+     'A6_Score',
+     'A7_Score',
+     'A8_Score',
+     'A9_Score',
+     'A10_Score',
+     'age',
+     'gender',
+     'ethnicity',
+     'jundice',
+     'austim',
+     'contry_of_res',
+     'used_app_before',
+     'age_desc',
+     'relation'],
+    'Class/ASD',
+    False)
 # utils.print_tree(tree_2, tree_2['data'], None, True, '')
