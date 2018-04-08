@@ -195,3 +195,5 @@ print()
 print('Se realiza 10-fold cross-validation')
 print('Promedio de error: ', utils.cross_validation(
     splitted_data[1], attributes, 'Class/ASD', 10))
+
+print(data_set['age'])

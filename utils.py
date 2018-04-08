@@ -320,15 +320,18 @@ def cross_validation(data, attributes, target_attr, k):
     folds = np.array_split(data, k)
 
     # Lista para guardar los errores obtenidos en cada iteración del algoritmo.
-    errors = []
-
+    errors_gain_ratio = []
+    errors_threshold = []
+    errors_simple = []
+    errors_threshold_probs = []
+    errors_gain_ratio_probs = []
     # Se abre el archivo para guardar los resultados
-    # file  = open('cross-validation-results.txt', 'a')
-    # file.write(
-    #     '\n' +
-    #     '------------------------------------------------------------' +
-    #     '\n' 
-    #     + str(k) +'-fold cross-validation')
+    file  = open('cross-validation-results.txt', 'a')
+    file.write(
+        '\n' +
+        '------------------------------------------------------------' +
+        '\n' 
+        + str(k) +'-fold cross-validation')
 
 
     l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -341,28 +344,32 @@ def cross_validation(data, attributes, target_attr, k):
         
         # Se entrena.
         # tree = ID3_algorithm(training_set, attributes, target_attr, True)
-        # tree = ID3_algorithm_with_threshold(training_set, attributes, target_attr, ['age'])
-        tree = ID3_algorithm(training_set, attributes, target_attr, False, False)
-        
+        tree_threshold = ID3_algorithm_with_threshold(training_set, attributes, target_attr, ['age'])
+        tree_gain_ratio = ID3_algorithm(training_set, attributes, target_attr, False, False)
+        tree_simple = ID3_algorithm(training_set, attributes, target_attr, True, False)
         # Se verifica el resultado y se guarda el error cometido validado
         # con el subconjunto i.
-        errors.append(validation(tree, validation_set, target_attr))
-
+        errors_gain_ratio.append(validation(tree_gain_ratio, validation_set, target_attr))
+        errors_threshold.append(validation(tree_threshold, validation_set, target_attr))
+        errors_simple.append(validation(tree_simple, validation_set, target_attr))
         # Se devuelve el subconjunto i a la lista de folds.
         folds.insert(i, validation_set)
 
-        # file.write(
-        #     '\n'
-        #     'Proporción de errores iteración '+str(i)+': ' + str(errors[i]) +
-        #     ' sobre un validation set de tamaño: ' + str(len(validation_set)))
+        file.write(
+            '\n'
+            'Proporción de errores iteración '+str(i)+': ' + str(errors_gain_ratio[i]) +
+            ' sobre un validation set de tamaño: ' + str(len(validation_set)))
         
         # training_set = l.pop(i)
         # print(l)
         # print(training_set)
         # l.insert(i,training_set)
         # print(l)
-    # file.write('\n\n' + 'Error promedio: ' + str(sum(errors)/k))
-    # file.close()
+    file.write('\n\n' + 'Error promedio GAIN RATIO: ' + str(sum(errors_gain_ratio)/k))
+    file.write('\n\n' + 'Error promedio THRESHOLD: ' + str(sum(errors_threshold)/k))
+    file.write('\n\n' + 'Error promedio SIMPLE: ' + str(sum(errors_simple)/k))
+
+    file.close()
     return sum(errors) / k
 
 
