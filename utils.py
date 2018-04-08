@@ -259,3 +259,37 @@ def find_most_common_value_in_S(instances, target_attr):
     return random.choice(maximum_keys_tied)
 
 
+
+
+def information_gain_missing_values_second_method(data, attr, target_attr):
+    # Calcula la ganancia de información del atributo attr sobre el
+    # conjunto data.
+
+    data_subsets = {}
+    data_information_gain = 0.0
+
+    # Se divide el conjunto data en subconjuntos que tienen en común
+    # el valor del atributo attr.
+    for instance in data:
+        if (instance[attr] in data_subsets):
+            data_subsets[instance[attr]].append(instance)
+        else:
+            data_subsets[instance[attr]] = [instance]
+
+    # Extension para valores faltantes primer metodo
+    if '-' in data_subsets:
+        data_without_miss_value_instance = copy.deepcopy(data)
+        for instance in data_subsets['-']:
+            data_without_miss_value_instance.remove(instance)
+        for key, value in data_subsets.items():
+            if key != '-':
+                probability_subsets = {key: len(value)/len(data_without_miss_value_instance)}
+    
+
+
+    # Se calcula el valor de information gain según lo visto en teórico.
+    data_information_gain = entropy(data, target_attr)
+    for data_subset in data_subsets.values():
+        data_information_gain -= (len(data_subset) / len(data)) * \
+            entropy(data_subset, target_attr)
+    return data_information_gain
