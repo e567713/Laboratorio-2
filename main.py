@@ -36,12 +36,16 @@ print('')
 S_entropy = utils.entropy(S, 'Salva')
 print('Entropía del conjunto: ', S_entropy)
 
-S_information_gain = utils.information_gain(S2, 'Dedicacion', 'Salva')
+S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva')
 print('Information gain del atributo Dedicación: ', S_information_gain)
-S_information_gain = utils.information_gain(S2, 'Humor Docente', 'Salva')
+S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva')
 print('Information gain del atributo Humor Docente: ', S_information_gain)
-S_information_gain = utils.information_gain(S2, 'Horario', 'Salva')
+S_information_gain = utils.information_gain(S, 'Horario', 'Salva')
 print('Information gain del atributo Horario: ', S_information_gain)
+S_information_gain = utils.information_gain(S, 'Dificultad', 'Salva')
+print('Information gain del atributo Dificultad: ', S_information_gain)
+S_information_gain = utils.information_gain(S, 'Humedad', 'Salva')
+print('Information gain del atributo Humedad: ', S_information_gain)
 
 tree = utils.ID3_algorithm(
     S,
@@ -77,8 +81,15 @@ print('-------------------------------------------------')
 print('-------------     Ejercicio 5b     --------------')
 print('-------------------------------------------------')
 print('')
+
+# Calculamos su entropía.
+data_set_entropy = utils.entropy(data_set, 'Class/ASD')
+print('Entropía del conjunto: ', data_set_entropy)
+print()
+
 print('Aplicacion de ID3 extendido para manejar atributos numéricos')
 print('')
+
 
 # Atributos a tener en cuenta
 attributes = ['A1_Score',
@@ -100,23 +111,26 @@ attributes = ['A1_Score',
               'used_app_before',
               'age_desc',
               'relation']
-# Calculamos su entropía.
-data_set_entropy = utils.entropy(data_set, 'Class/ASD')
-print('Entropía del conjunto: ', data_set_entropy)
 
 # Primera solución implementada
+print('Utilizando thresholds')
 tree_2 = utils.ID3_algorithm_with_threshold(
     data_set,
     attributes,
     'Class/ASD',
     ['age'])
+print()
 
+print('Utilizando gain ratio')
 # Segunda solución implementada
 tree_3 = utils.ID3_algorithm(
     data_set,
     attributes,
     'Class/ASD',
     False)
+print()
+
+print('NO ANDAN LOS PRINTS PARA ÁRBOLES GENERADOS CON EL DATA SET DE LA LETRA')
 
 print('')
 print('')
@@ -128,8 +142,21 @@ print('')
 print('Cross-Validation')
 print('')
 
-# Separamos el data set en dos subconjuntos 
-# splitted_data = utils.split_20_80(data_set)
+# Calculamos su entropía.
+data_set_entropy = utils.entropy(data_set, 'Class/ASD')
+print('Entropía del conjunto: ', data_set_entropy)
 
-# print(utils.cross_validation(splitted_data[1], attributes, 'Class/ASD', 10))
+# Separamos el data set en dos subconjuntos
+print()
+print('Se separa el data set en dos subconjuntos')
+splitted_data = utils.split_20_80(data_set)
 
+# Verificamos la correctitud de los tamaños
+print('Tamaño del data set original: ', str(len(data_set)))
+print('Tamaño del subset de validació: ', str(len(splitted_data[0])))
+print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
+
+print()
+# Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
+print('Se realiza 10-fold cross-validation')
+print('Promedio de error: ',utils.cross_validation(splitted_data[1], attributes, 'Class/ASD', 10))
