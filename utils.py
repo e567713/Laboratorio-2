@@ -3,9 +3,10 @@ from scipy.io import arff
 from collections import Counter
 import copy
 import random
+import numpy as np
 
 
-def ID3_algorithm(data, attributes, target_attr, use_information_gain):
+def ID3_algorithm(data, attributes, target_attr, use_information_gain, use_missing_values_second_method):
     # Algoritmo ID3 básico.
 
     # Genera lista únicamente con los valores del target attribute.
@@ -28,7 +29,8 @@ def ID3_algorithm(data, attributes, target_attr, use_information_gain):
     # En caso contrario
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos.
-        best_attr = get_best_attribute(data, attributes, target_attr, use_information_gain)
+        best_attr = get_best_attribute(
+            data, attributes, target_attr, use_information_gain, use_missing_values_second_method)
 
         # Se obtienen los valores que puede tomar el atributo best_attr.
         best_attr_values = set(instance[best_attr] for instance in data)
@@ -58,7 +60,7 @@ def ID3_algorithm(data, attributes, target_attr, use_information_gain):
                 filtered_attributes = copy.deepcopy(attributes)
                 filtered_attributes.remove(best_attr)
                 tree['childs'][value] = ID3_algorithm(
-                    filtered_data, filtered_attributes, target_attr, use_information_gain)
+                    filtered_data, filtered_attributes, target_attr, use_information_gain, use_missing_values_second_method)
         return tree
 
 
@@ -124,7 +126,7 @@ def most_common(lst):
     return max(lst, key=data.get)
 
 
-def get_best_attribute(data, attributes, target_attr, use_information_gain):
+def get_best_attribute(data, attributes, target_attr, use_information_gain, use_missing_values_second_method):
     # Elige el mejor atributo medido según la ganancia de información o según
     # el gain ratio dependiendo del valor del parametro booleano use_information_gain.
     # Si existe más de un atributo óptimo para las condiciones dadas,
@@ -134,6 +136,8 @@ def get_best_attribute(data, attributes, target_attr, use_information_gain):
     for attr in attributes:
         if use_information_gain:
             measure = information_gain(data, attr, target_attr)
+        elif use_missing_values_second_method:
+            measure = information_gain_missing_values_second_method(data, attr, target_attr)
         else:
             measure = gain_ratio(data, attr, target_attr)
         if measure > max_measure:
@@ -189,7 +193,7 @@ def ID3_algorithm_with_threshold(data, attributes, target_attr, numeric_attribut
         copy.deepcopy(data), target_attr, numeric_attributes)
 
     # Se llama a la función ID3 ya implementada con el conjunto de datos procesados.
-    return ID3_algorithm(splitted_data, attributes, target_attr, True)
+    return ID3_algorithm(splitted_data, attributes, target_attr, True, False)
 
 
 def split_numeric_attributes(data, target_attr, numeric_attributes):
@@ -286,6 +290,101 @@ def split_information(data, attr):
 def gain_ratio(data, attr, target_attr):
     return  information_gain(data, attr, target_attr) / split_information(data, attr)
 
+def split_20_80(d):
+    # Divide el conjunto de datos en dos subconjuntos, uno con el 80% de los datos
+    # y el otro con el restante 20%.
+
+    # Se copia el conjunto de datos original para no alterarlo.
+    data = copy.deepcopy(d)
+
+    # Se ordenan aleatoriamente los ejemplos del conjunto para simular la
+    # elección al azar de elementos para formar los subconjuntos.
+    np.random.shuffle(data)
+
+    # Se obtiene la cantidad de elementos que suponen el 20% de los datos.
+    limit = len(data) // 5
+
+    # Se crean los subconjuntos
+    subset_20 = data[:limit]
+    subset_80 = data[limit:]
+
+    return (subset_20, subset_80)
+
+
+def cross_validation(data, attributes, target_attr, k):
+    # Implementación del algoritmo k-fold cross-validation
+    # Nota: Recordar que el conjunto data fue seleccionado al azar del conjunto
+    # inicial de datos.
+
+    # Se divide el conjunto de datos en k subconjuntos.
+    folds = np.array_split(data, k)
+
+    # Lista para guardar los errores obtenidos en cada iteración del algoritmo.
+    errors = []
+
+    # Se abre el archivo para guardar los resultados
+    file  = open('cross-validation-results.txt', 'a')
+    file.write(
+        '\n' +
+        '------------------------------------------------------------' +
+        '\n' 
+        + str(k) +'-fold cross-validation')
+
+
+    l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for i in range(k):
+        # Se aparta el subconjunto i para validación.
+        validation_set = folds.pop(i)
+
+        # Se unen los restantes subconjuntos para formar el nuevo set de entrenamiento.
+        training_set = np.concatenate(folds)
+        
+        # Se entrena.
+        # tree = ID3_algorithm(training_set, attributes, target_attr, True)
+        # tree = ID3_algorithm_with_threshold(training_set, attributes, target_attr, ['age'])
+        tree = ID3_algorithm(training_set, attributes, target_attr, False, False)
+        
+        # Se verifica el resultado y se guarda el error cometido validado
+        # con el subconjunto i.
+        errors.append(validation(tree, validation_set, target_attr))
+
+        # Se devuelve el subconjunto i a la lista de folds.
+        folds.insert(i, validation_set)
+
+        file.write(
+            '\n'
+            'Proporción de errores iteración '+str(i)+': ' + str(errors[i]) +
+            ' sobre un validation set de tamaño: ' + str(len(validation_set)))
+        
+        # training_set = l.pop(i)
+        # print(l)
+        # print(training_set)
+        # l.insert(i,training_set)
+        # print(l)
+    file.write('\n\n' + 'Error promedio: ' + str(sum(errors)/k))
+    file.close()
+    return sum(errors) / k
+
+
+def validation(tree, validation_set, target_attr):
+    errors = 0
+    for instance in validation_set:
+        errors += validate_instance(tree, instance, target_attr)
+    return errors / len(validation_set)
+
+
+def validate_instance(tree, instance, target_attr):
+    if not tree['childs']:
+        if (tree['data'] == instance[target_attr]):
+            return 0
+        else:
+            return 1
+    else:
+        if instance[tree['data']] in tree['childs']:
+            return validate_instance(tree['childs'][instance[tree['data']]], instance, target_attr)
+        else:
+            return 1
+
 
 def information_gain_missing_values_second_method(data, attr, target_attr):
     # Calcula la ganancia de información del atributo attr sobre el
@@ -298,6 +397,7 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
 
     # Se divide el conjunto data en subconjuntos que tienen en común
     # el valor del atributo attr.
+    # quantity_subsets es un diccionario con key un posible valor del atributo y value la cantidad de veces que aparece (|Sv|)
     # quantity_subsets_target_attr es un diccionario que tiene key el valor del atributo attr y value 
     # un array con tuplas (n,r) con n la cantidad de veces que aparece el resultado r en los ejemplos
     for instance in data:
@@ -306,11 +406,11 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
 
             if instance[attr] != '-':
                 quantity_subsets[instance[attr]] += 1
-                i = exist_tuple(quantity_subsets_target_attr[instance[attr]], instance[target_attr]):
+                i = exist_tuple(quantity_subsets_target_attr[instance[attr]], instance[target_attr])
                 if i == -1:
                     quantity_subsets_target_attr[instance[attr]].append((1, instance[target_attr]))
                 else:
-                    quantity_subsets_target_attr[instance[attr]][i][0] += 1
+                    quantity_subsets_target_attr[instance[attr]][i] = (quantity_subsets_target_attr[instance[attr]][i][0] + 1, instance[target_attr])
         else:
             data_subsets[instance[attr]] = [instance]
 
@@ -318,14 +418,12 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
                 quantity_subsets[instance[attr]] = 1
                 quantity_subsets_target_attr[instance[attr]] = [(1, instance[target_attr])]
             
-
-    # Entropy de todo el conjunto
-    data_information_gain = entropy(data, target_attr)
-
-    # quantity_subsets es un diccionario con key un posible valor del atributo y value la cantidad de veces que aparece (|Sv|)
-    # quiero construir un diccionario que tenga key el valor y value un array con tuplas (n,r) con n la cantidad de veces que 
-    # aparece el resultado r en los ejemplos
-    
+    # print()
+    # print(attr)
+    # print()
+    # print(quantity_subsets)
+    # print()
+    # print(quantity_subsets_target_attr)
     
     if '-' in data_subsets:
         data_without_miss_value_instance = copy.deepcopy(data)
@@ -333,14 +431,21 @@ def information_gain_missing_values_second_method(data, attr, target_attr):
             data_without_miss_value_instance.remove(instance)
         for key, value in quantity_subsets.items():
             quantity_subsets[key] += quantity_subsets[key] / len(data_without_miss_value_instance) * len(data_subsets['-'])
-            for instance in data_subsets['-']
-                i = exist_tuple(quantity_subsets_target_attr[key], instance[target_attr]):
+            for instance in data_subsets['-']:
+                i = exist_tuple(quantity_subsets_target_attr[key], instance[target_attr])
                 prop = len(data_subsets[key]) / len(data_without_miss_value_instance)
                 if i == -1:
                     quantity_subsets_target_attr[key].append((prop, instance[target_attr]))
                 else:
-                    quantity_subsets_target_attr[key][i][0] += prop
+                    quantity_subsets_target_attr[key][i] = (quantity_subsets_target_attr[key][i][0] + prop, instance[target_attr])
 
+    # print()
+    # print(quantity_subsets)
+    # print()
+    # print(quantity_subsets_target_attr)
+
+    # Entropy de todo el conjunto
+    data_information_gain = entropy(data, target_attr)
 
     # Se calcula el valor de information gain según lo visto en teórico.
     for key, value in quantity_subsets.items():
@@ -353,12 +458,12 @@ def exist_tuple(arr, target_value):
     i = -1
     for instance in arr:
         i += 1
-        if instance[1] == target_value
+        if instance[1] == target_value:
             return i
     return -1
 
 
-def entropy_missing_values_second_method(key, quantity_subsets, quantity_subsets_target_attr)
+def entropy_missing_values_second_method(key, quantity_subsets, quantity_subsets_target_attr):
     data_entropy = 0.0
 
     for element in quantity_subsets_target_attr[key]:

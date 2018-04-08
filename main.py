@@ -26,6 +26,19 @@ S2 = [{'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Matutino',
       {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Matutino',
        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'}]
 
+# Data set de prueba valores faltantes
+S3 = [
+    {'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Matutino',
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
+    {'Dedicacion': 'Baja', 'Dificultad': 'Media', 'Horario': 'Matutino',
+        'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
+    {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
+        'Humedad': 'Media', 'Humor Docente': 'Malo', 'Salva': 'Yes'},
+    {'Dedicacion': 'Media', 'Dificultad': '-', 'Horario': 'Matutino',
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
+]
+
+
 print('-------------------------------------------------')
 print('-------------     Ejercicio 5a     --------------')
 print('-------------------------------------------------')
@@ -47,18 +60,23 @@ tree = utils.ID3_algorithm(
     S,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
-    True)
+    True, False)
 
 utils.print_tree(tree, tree['data'], None, True, '')
+
+print()
+print()
+print('Aplicacion de ID3 a un segundo conjunto de entrenamiento')
+print()
 
 # Algoritmo aplicado al segundo conjunto de prueba
 tree2 = utils.ID3_algorithm(
     S2,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
-    True)
+    True, False)
 
-# utils.print_tree(tree2, tree['data'], None, True, '')
+utils.print_tree(tree2, tree['data'], None, True, '')
 
 
 #############################################
@@ -80,80 +98,73 @@ print('')
 print('Aplicacion de ID3 extendido para manejar atributos numéricos')
 print('')
 
+# Atributos a tener en cuenta
+attributes = ['A1_Score',
+              'A2_Score',
+              'A3_Score',
+              'A4_Score',
+              'A5_Score',
+              'A6_Score',
+              'A7_Score',
+              'A8_Score',
+              'A9_Score',
+              'A10_Score',
+              'age',
+              'gender',
+              'ethnicity',
+              'jundice',
+              'austim',
+              'contry_of_res',
+              'used_app_before',
+              'age_desc',
+              'relation']
 # Calculamos su entropía.
 data_set_entropy = utils.entropy(data_set, 'Class/ASD')
-print('Entropía del conjunto: ', data_set_entropy)
+# print('Entropía del conjunto: ', data_set_entropy)
 
-# tree_2 = utils.ID3_algorithm(
-#     data_set,
-#     ['A1_Score',
-#      'A2_Score',
-#      'A3_Score',
-#      'A4_Score',
-#      'A5_Score',
-#      'A6_Score',
-#      'A7_Score',
-#      'A8_Score',
-#      'A9_Score',
-#      'A10_Score',
-#      'age',
-#      'gender',
-#      'ethnicity',
-#      'jundice',
-#      'austim',
-#      'contry_of_res',
-#      'used_app_before',
-#      'result',
-#      'age_desc',
-#      'relation'],
-#     'Class/ASD')
-
+# Primera solución implementada
 tree_2 = utils.ID3_algorithm_with_threshold(
     data_set,
-    ['A1_Score',
-     'A2_Score',
-     'A3_Score',
-     'A4_Score',
-     'A5_Score',
-     'A6_Score',
-     'A7_Score',
-     'A8_Score',
-     'A9_Score',
-     'A10_Score',
-     'age',
-     'gender',
-     'ethnicity',
-     'jundice',
-     'austim',
-     'contry_of_res',
-     'used_app_before',
-     # 'result',
-     'age_desc',
-     'relation'],
+    attributes,
     'Class/ASD',
     ['age'])
 
+# Segunda solución implementada
 tree_3 = utils.ID3_algorithm(
     data_set,
-    ['A1_Score',
-     'A2_Score',
-     'A3_Score',
-     'A4_Score',
-     'A5_Score',
-     'A6_Score',
-     'A7_Score',
-     'A8_Score',
-     'A9_Score',
-     'A10_Score',
-     'age',
-     'gender',
-     'ethnicity',
-     'jundice',
-     'austim',
-     'contry_of_res',
-     'used_app_before',
-     'age_desc',
-     'relation'],
+    attributes,
     'Class/ASD',
-    False)
-# utils.print_tree(tree_2, tree_2['data'], None, True, '')
+    False, False)
+
+# Primera solución implementada valores faltantes
+tree_4 = utils.ID3_algorithm(
+    S3,
+    ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
+    'Salva',
+    False, False)
+# utils.print_tree(tree_4, tree_4['data'], None, True, '')
+
+
+# Segunda solución implementada valores faltantes
+tree_5 = utils.ID3_algorithm(
+    S3,
+    ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
+    'Salva',
+    False, True)
+# utils.print_tree(tree_5, tree_5['data'], None, True, '')
+
+print('')
+print('')
+print('')
+print('-------------------------------------------------')
+print('-------------     Ejercicio 5c     --------------')
+print('-------------------------------------------------')
+print('')
+print('Cross-Validation')
+print('')
+
+# Separamos el data set en dos subconjuntos 
+# splitted_data = utils.split_20_80(data_set)
+
+# print(utils.cross_validation(splitted_data[1], attributes, 'Class/ASD', 10))
+
