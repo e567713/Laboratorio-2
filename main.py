@@ -153,10 +153,11 @@ splitted_data = utils.split_20_80(data_set)
 
 # Verificamos la correctitud de los tamaños
 print('Tamaño del data set original: ', str(len(data_set)))
-print('Tamaño del subset de validació: ', str(len(splitted_data[0])))
+print('Tamaño del subset de validación: ', str(len(splitted_data[0])))
 print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
 
 print()
 # Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
 print('Se realiza 10-fold cross-validation')
-print('Promedio de error: ',utils.cross_validation(splitted_data[1], attributes, 'Class/ASD', 10))
+print('Promedio de error: ', utils.cross_validation(
+    splitted_data[1], attributes, 'Class/ASD', 10))
