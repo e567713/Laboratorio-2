@@ -26,6 +26,19 @@ S2 = [{'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Matutino',
       {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Matutino',
        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'}]
 
+# Data set de prueba valores faltantes
+S3 = [
+    {'Dedicacion': 'Alta', 'Dificultad': 'Alta', 'Horario': 'Matutino',
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
+    {'Dedicacion': 'Baja', 'Dificultad': 'Media', 'Horario': 'Matutino',
+        'Humedad': 'Alta', 'Humor Docente': 'Malo', 'Salva': 'No'},
+    {'Dedicacion': 'Media', 'Dificultad': 'Alta', 'Horario': 'Nocturno',
+        'Humedad': 'Media', 'Humor Docente': 'Malo', 'Salva': 'Yes'},
+    {'Dedicacion': 'Media', 'Dificultad': '-', 'Horario': 'Matutino',
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
+]
+
+
 print('-------------------------------------------------')
 print('-------------     Ejercicio 5a     --------------')
 print('-------------------------------------------------')
@@ -51,18 +64,23 @@ tree = utils.ID3_algorithm(
     S,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
-    True)
+    True, False)
 
 utils.print_tree(tree, tree['data'], None, True, '')
+
+print()
+print()
+print('Aplicacion de ID3 a un segundo conjunto de entrenamiento')
+print()
 
 # Algoritmo aplicado al segundo conjunto de prueba
 tree2 = utils.ID3_algorithm(
     S2,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
-    True)
+    True, False)
 
-# utils.print_tree(tree2, tree['data'], None, True, '')
+utils.print_tree(tree2, tree['data'], None, True, '')
 
 
 #############################################
@@ -127,9 +145,25 @@ tree_3 = utils.ID3_algorithm(
     data_set,
     attributes,
     'Class/ASD',
-    False)
-print()
+    False, False)
 
+# Primera solución implementada valores faltantes
+tree_4 = utils.ID3_algorithm(
+    S3,
+    ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
+    'Salva',
+    False, False)
+# utils.print_tree(tree_4, tree_4['data'], None, True, '')
+
+
+# Segunda solución implementada valores faltantes
+tree_5 = utils.ID3_algorithm(
+    S3,
+    ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
+    'Salva',
+    False, True)
+# utils.print_tree(tree_5, tree_5['data'], None, True, '')
+    
 print('NO ANDAN LOS PRINTS PARA ÁRBOLES GENERADOS CON EL DATA SET DE LA LETRA')
 
 print('')
