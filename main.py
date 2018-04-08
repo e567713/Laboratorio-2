@@ -157,3 +157,5 @@ tree_3 = utils.ID3_algorithm(
     'Class/ASD',
     False)
 # utils.print_tree(tree_2, tree_2['data'], None, True, '')
+
+utils.split_80_20(data_set)

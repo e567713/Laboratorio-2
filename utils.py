@@ -3,7 +3,7 @@ from scipy.io import arff
 from collections import Counter
 import copy
 import random
-
+import numpy as np
 
 def ID3_algorithm(data, attributes, target_attr, use_information_gain):
     # Algoritmo ID3 básico.
@@ -285,3 +285,23 @@ def split_information(data, attr):
 
 def gain_ratio(data, attr, target_attr):
     return  information_gain(data, attr, target_attr) / split_information(data, attr)
+
+def split_80_20 (d):
+    # Divide el conjunto de datos en dos subconjuntos, uno con el 80% de los datos
+    # y el otro con el restante 20%.
+    
+    # Se copia el conjunto de datos original para no alterarlo.
+    data = copy.deepcopy(d)
+
+    # Se ordenan aleatoriamente los ejemplos del conjunto para simular la
+    # elección al azar de elementos para formar los subconjuntos. 
+    np.random.shuffle(data)
+
+    # Se obtiene la cantidad de elementos que suponen el 20% de los datos.
+    limit = len(data)//5
+
+    # Se crean los subconjuntos
+    subset_20 = data[:limit]
+    subset_80 = data[limit:] 
+
+    return (subset_20, subset_80)
