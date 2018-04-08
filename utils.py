@@ -5,6 +5,7 @@ import copy
 import random
 import numpy as np
 
+
 def ID3_algorithm(data, attributes, target_attr, use_information_gain):
     # Algoritmo ID3 básico.
 
@@ -28,7 +29,8 @@ def ID3_algorithm(data, attributes, target_attr, use_information_gain):
     # En caso contrario
     else:
         # Se obtiene el atributo best_attr que mejor clasifica los ejemplos.
-        best_attr = get_best_attribute(data, attributes, target_attr, use_information_gain)
+        best_attr = get_best_attribute(
+            data, attributes, target_attr, use_information_gain)
 
         # Se obtienen los valores que puede tomar el atributo best_attr.
         best_attr_values = set(instance[best_attr] for instance in data)
@@ -284,24 +286,101 @@ def split_information(data, attr):
 
 
 def gain_ratio(data, attr, target_attr):
-    return  information_gain(data, attr, target_attr) / split_information(data, attr)
+    return information_gain(data, attr, target_attr) / split_information(data, attr)
 
-def split_80_20 (d):
+
+def split_20_80(d):
     # Divide el conjunto de datos en dos subconjuntos, uno con el 80% de los datos
     # y el otro con el restante 20%.
-    
+
     # Se copia el conjunto de datos original para no alterarlo.
     data = copy.deepcopy(d)
 
     # Se ordenan aleatoriamente los ejemplos del conjunto para simular la
-    # elección al azar de elementos para formar los subconjuntos. 
+    # elección al azar de elementos para formar los subconjuntos.
     np.random.shuffle(data)
 
     # Se obtiene la cantidad de elementos que suponen el 20% de los datos.
-    limit = len(data)//5
+    limit = len(data) // 5
 
     # Se crean los subconjuntos
     subset_20 = data[:limit]
-    subset_80 = data[limit:] 
+    subset_80 = data[limit:]
 
     return (subset_20, subset_80)
+
+
+def cross_validation(data, attributes, target_attr, k):
+    # Implementación del algoritmo k-fold cross-validation
+    # Nota: Recordar que el conjunto data fue seleccionado al azar del conjunto
+    # inicial de datos.
+
+    # Se divide el conjunto de datos en k subconjuntos.
+    folds = np.array_split(data, k)
+
+    # Lista para guardar los errores obtenidos en cada iteración del algoritmo.
+    errors = []
+
+    # Se abre el archivo para guardar los resultados
+    file  = open('cross-validation-results.txt', 'a')
+    file.write(
+        '\n' +
+        '------------------------------------------------------------' +
+        '\n' 
+        + str(k) +'-fold cross-validation')
+
+
+    l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    for i in range(k):
+        # Se aparta el subconjunto i para validación.
+        validation_set = folds.pop(i)
+
+        # Se unen los restantes subconjuntos para formar el nuevo set de entrenamiento.
+        training_set = np.concatenate(folds)
+        
+        # Se entrena.
+        # tree = ID3_algorithm(training_set, attributes, target_attr, True)
+        # tree = ID3_algorithm_with_threshold(training_set, attributes, target_attr, ['age'])
+        tree = ID3_algorithm(training_set, attributes, target_attr, False)
+        
+        # Se verifica el resultado y se guarda el error cometido validado
+        # con el subconjunto i.
+        errors.append(validation(tree, validation_set, target_attr))
+
+        # Se devuelve el subconjunto i a la lista de folds.
+        folds.insert(i, validation_set)
+
+        file.write(
+            '\n'
+            'Proporción de errores iteración '+str(i)+': ' + str(errors[i]) +
+            ' sobre un validation set de tamaño: ' + str(len(validation_set)))
+        
+        # training_set = l.pop(i)
+        # print(l)
+        # print(training_set)
+        # l.insert(i,training_set)
+        # print(l)
+    file.write('\n\n' + 'Error promedio: ' + str(sum(errors)/k))
+    file.close()
+    return sum(errors) / k
+
+
+def validation(tree, validation_set, target_attr):
+    errors = 0
+    for instance in validation_set:
+        errors += validate_instance(tree, instance, target_attr)
+    return errors / len(validation_set)
+
+
+def validate_instance(tree, instance, target_attr):
+    if not tree['childs']:
+        if (tree['data'] == instance[target_attr]):
+            return 0
+        else:
+            return 1
+    else:
+        if instance[tree['data']] in tree['childs']:
+            return validate_instance(tree['childs'][instance[tree['data']]], instance, target_attr)
+        else:
+            return 1
+

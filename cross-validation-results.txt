@@ -1,0 +1,432 @@
+#####################################################################
+################    CON IDE3 - (Sin extensiones)    #################
+#####################################################################
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.38596491228070173 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.4107142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.4107142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.42857142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.44642857142857145 sobre un validation set de tamaño: 56
+
+Error promedio: 0.3830513784461153
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.3333333333333333 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3157894736842105 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.40350877192982454 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.44642857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.48214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.4107142857142857 sobre un validation set de tamaño: 56
+
+Error promedio: 0.3724624060150376
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.2807017543859649 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.47368421052631576 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.5535714285714286 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.48214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.3392857142857143 sobre un validation set de tamaño: 56
+
+Error promedio: 0.36519423558897246
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.40350877192982454 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.47368421052631576 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.5263157894736842 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.5087719298245614 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.35714285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.44642857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.30357142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.4107142857142857 sobre un validation set de tamaño: 56
+
+Error promedio: 0.40729949874686716
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.3157894736842105 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.45614035087719296 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.45614035087719296 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.39285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.4107142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.3392857142857143 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.5178571428571429 sobre un validation set de tamaño: 56
+
+Error promedio: 0.3900062656641604
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.42105263157894735 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.3508771929824561 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3157894736842105 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.45614035087719296 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.26785714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.30357142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.42857142857142855 sobre un validation set de tamaño: 56
+
+Error promedio: 0.3472431077694235
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.45614035087719296 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3333333333333333 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.3333333333333333 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.30357142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.35714285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.26785714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.375 sobre un validation set de tamaño: 56
+
+Error promedio: 0.3225250626566416
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.24561403508771928 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.24561403508771928 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.2554511278195488
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.42105263157894735 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.40350877192982454 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.38596491228070173 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.5 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.375 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.30357142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.375 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.34718045112781953
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.3684210526315789 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.42105263157894735 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.48214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.42857142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.39285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.375 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.375 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.39285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.36920426065162903
+
+#####################################################################
+################    CON IDE3 - Extensión Thresholds    ##############
+#####################################################################
+
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.10526315789473684 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.25 sobre un validation set de tamaño: 56
+
+Error promedio: 0.18273809523809523
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.2020989974937343
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.2982456140350877 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.10714285714285714 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.42857142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.23214285714285715 sobre un validation set de tamaño: 56
+
+Error promedio: 0.22525062656641603
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.2807017543859649 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.23214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.19642857142857142 sobre un validation set de tamaño: 56
+
+Error promedio: 0.20914786967418547
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.26785714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.125 sobre un validation set de tamaño: 56
+
+Error promedio: 0.18793859649122807
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.24561403508771928 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.23214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.2857142857142857 sobre un validation set de tamaño: 56
+
+Error promedio: 0.22515664160401
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.24561403508771928 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.30357142857142855 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.23214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.17857142857142858 sobre un validation set de tamaño: 56
+
+Error promedio: 0.21105889724310772
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.22807017543859648 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.32142857142857145 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.23214285714285715 sobre un validation set de tamaño: 56
+
+Error promedio: 0.20946115288220551
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.2982456140350877 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.21428571428571427 sobre un validation set de tamaño: 56
+
+Error promedio: 0.2179824561403509
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.10714285714285714 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.23214285714285715 sobre un validation set de tamaño: 56
+
+Error promedio: 0.18796992481203006
+
+#####################################################################
+################    CON IDE3 - Extensión GainRatio    ###############
+#####################################################################
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.10714285714285714 sobre un validation set de tamaño: 56
+
+Error promedio: 0.17192982456140352
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.10526315789473684 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.16864035087719298
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.10526315789473684 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.2631578947368421 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.19642857142857142 sobre un validation set de tamaño: 56
+
+Error promedio: 0.19517543859649122
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.08771929824561403 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.10526315789473684 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.10714285714285714 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.10714285714285714 sobre un validation set de tamaño: 56
+
+Error promedio: 0.12951127819548872
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.3392857142857143 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.25 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.10714285714285714 sobre un validation set de tamaño: 56
+
+Error promedio: 0.18449248120300754
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.19298245614035087 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.07017543859649122 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.10714285714285714 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.08928571428571429 sobre un validation set de tamaño: 56
+
+Error promedio: 0.1400689223057644
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.08771929824561403 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.23214285714285715 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.07142857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.16071428571428573 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.15968045112781953
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.24561403508771928 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.21428571428571427 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.14285714285714285 sobre un validation set de tamaño: 56
+
+Error promedio: 0.17719298245614032
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.15789473684210525 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.12280701754385964 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.2857142857142857 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.19642857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.26785714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.10714285714285714 sobre un validation set de tamaño: 56
+
+Error promedio: 0.1899122807017544
+------------------------------------------------------------
+10-fold cross-validation
+Proporción de errores iteración 0: 0.08771929824561403 sobre un validation set de tamaño: 57
+Proporción de errores iteración 1: 0.10526315789473684 sobre un validation set de tamaño: 57
+Proporción de errores iteración 2: 0.14035087719298245 sobre un validation set de tamaño: 57
+Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
+Proporción de errores iteración 4: 0.08928571428571429 sobre un validation set de tamaño: 56
+Proporción de errores iteración 5: 0.14285714285714285 sobre un validation set de tamaño: 56
+Proporción de errores iteración 6: 0.17857142857142858 sobre un validation set de tamaño: 56
+Proporción de errores iteración 7: 0.125 sobre un validation set de tamaño: 56
+Proporción de errores iteración 8: 0.07142857142857142 sobre un validation set de tamaño: 56
+Proporción de errores iteración 9: 0.19642857142857142 sobre un validation set de tamaño: 56
+
+Error promedio: 0.13474310776942355
