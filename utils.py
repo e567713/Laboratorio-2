@@ -323,12 +323,12 @@ def cross_validation(data, attributes, target_attr, k):
     errors = []
 
     # Se abre el archivo para guardar los resultados
-    file  = open('cross-validation-results.txt', 'a')
-    file.write(
-        '\n' +
-        '------------------------------------------------------------' +
-        '\n' 
-        + str(k) +'-fold cross-validation')
+    # file  = open('cross-validation-results.txt', 'a')
+    # file.write(
+    #     '\n' +
+    #     '------------------------------------------------------------' +
+    #     '\n' 
+    #     + str(k) +'-fold cross-validation')
 
 
     l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -351,18 +351,18 @@ def cross_validation(data, attributes, target_attr, k):
         # Se devuelve el subconjunto i a la lista de folds.
         folds.insert(i, validation_set)
 
-        file.write(
-            '\n'
-            'Proporción de errores iteración '+str(i)+': ' + str(errors[i]) +
-            ' sobre un validation set de tamaño: ' + str(len(validation_set)))
+        # file.write(
+        #     '\n'
+        #     'Proporción de errores iteración '+str(i)+': ' + str(errors[i]) +
+        #     ' sobre un validation set de tamaño: ' + str(len(validation_set)))
         
         # training_set = l.pop(i)
         # print(l)
         # print(training_set)
         # l.insert(i,training_set)
         # print(l)
-    file.write('\n\n' + 'Error promedio: ' + str(sum(errors)/k))
-    file.close()
+    # file.write('\n\n' + 'Error promedio: ' + str(sum(errors)/k))
+    # file.close()
     return sum(errors) / k
 
 
