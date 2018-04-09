@@ -181,7 +181,6 @@ print('Cross-Validation')
 print('')
 
 
-
 # Separamos el data set en dos subconjuntos
 print()
 print('Se separa el data set en dos subconjuntos')
@@ -194,24 +193,31 @@ print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
 
 print()
 
-# Parte 1
-print('Parte 1')
-# Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
-print('Se realiza 10-fold cross-validation')
-print('Promedio de error: ', utils.cross_validation(
-    splitted_data[1], attributes, 'Class/ASD', 10))
+file = open('5c_comparacion.txt', 'a')
+for i in range(2):
+  	
+    # Parte 1
+    print('Parte 1')
+    # Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
+    print('Se realiza 10-fold cross-validation')
+    splitted_data = utils.split_20_80(data_set)
+    cs = utils.cross_validation(
+        splitted_data[1], attributes, 'Class/ASD', 10)
+    print('Promedio de error: ', cs)
+    file.write('C-V: ' + str(cs) + ' ---- ')
+    # Parte 2
+    print('Parte 2')
 
+    # Se entrena con el 80%
+    tree_6 = utils.ID3_algorithm(
+        splitted_data[1],
+        attributes,
+        'Class/ASD',
+        False, False)
 
-# Parte 2
-print('Parte 2')
-
-# Se entrena con el 80%
-tree_6 = utils.ID3_algorithm(
-    splitted_data[1],
-    attributes,
-    'Class/ASD',
-    False, False)
-
-# Se valida con el 20%
-print('Resultado de la validación: ', utils.validation(
-    tree_6, splitted_data[0], 'Class/ASD'))
+    # Se valida con el 20%
+    v = utils.validation(
+        tree_6, splitted_data[0], 'Class/ASD')
+    print('Resultado de la validación: ', v)
+    file.write('V: ' + str(v) + '   diff: ' + str(cs-v)+ '\n')
+file.close()
