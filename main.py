@@ -191,10 +191,6 @@ print('')
 data_set_entropy = utils.entropy(data_set, 'Class/ASD')
 print('Entropía del conjunto: ', data_set_entropy)
 
-print('')
-print('Cross-Validation')
-print('')
-
 
 # Separamos el data set en dos subconjuntos
 print()
@@ -205,34 +201,28 @@ splitted_data = utils.split_20_80(data_set)
 print('Tamaño del data set original: ', str(len(data_set)))
 print('Tamaño del subset de validación: ', str(len(splitted_data[0])))
 print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
-
 print()
+	
+# Parte 1
+print('Parte 1')
+# Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
+print('Se realiza 10-fold cross-validation')
 
-file = open('5c_comparacion.txt', 'a')
-for i in range(10000):
-  	
-    # Parte 1
-    print('Parte 1')
-    # Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
-    print('Se realiza 10-fold cross-validation')
-    splitted_data = utils.split_20_80(data_set)
-    cs = utils.cross_validation(
-        splitted_data[1], attributes, 'Class/ASD', 10)
-    print('Promedio de error: ', cs)
-    file.write('C-V: ' + str(cs) + ' ---- ')
-    # Parte 2
-    print('Parte 2')
+v_cs = utils.cross_validation(
+    splitted_data[1], attributes, 'Class/ASD', 10)
+print('Promedio de error: ', v_cs)
+# Parte 2
+print('Parte 2')
+print('Se realiza Hold out validation')
 
-    # Se entrena con el 80%
-    tree_6 = utils.ID3_algorithm(
-        splitted_data[1],
-        attributes,
-        'Class/ASD',
-        False, False)
+# Se entrena con el 80%
+tree_6 = utils.ID3_algorithm(
+    splitted_data[1],
+    attributes,
+    'Class/ASD',
+    False, False)
 
-    # Se valida con el 20%
-    v = utils.validation(
-        tree_6, splitted_data[0], 'Class/ASD')
-    print('Resultado de la validación: ', v)
-    file.write('V: ' + str(v) + '   diff: ' + str(cs-v)+ '\n')
-file.close()
+# Se valida con el 20%
+v_ho = utils.validation(
+    tree_6, splitted_data[0], 'Class/ASD')
+print('Resultado de la validación: ', v_ho)
