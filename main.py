@@ -171,12 +171,16 @@ print('-------------------------------------------------')
 print('-------------     Ejercicio 5c     --------------')
 print('-------------------------------------------------')
 print('')
-print('Cross-Validation')
-print('')
 
 # Calculamos su entropía.
 data_set_entropy = utils.entropy(data_set, 'Class/ASD')
 print('Entropía del conjunto: ', data_set_entropy)
+
+print('')
+print('Cross-Validation')
+print('')
+
+
 
 # Separamos el data set en dos subconjuntos
 print()
@@ -189,9 +193,25 @@ print('Tamaño del subset de validación: ', str(len(splitted_data[0])))
 print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
 
 print()
+
+# Parte 1
+print('Parte 1')
 # Se realiza cross-validation de tamaño 10 sobre el 80% del conjunto original.
 print('Se realiza 10-fold cross-validation')
 print('Promedio de error: ', utils.cross_validation(
     splitted_data[1], attributes, 'Class/ASD', 10))
 
-print(data_set['age'])
+
+# Parte 2
+print('Parte 2')
+
+# Se entrena con el 80%
+tree_6 = utils.ID3_algorithm(
+    splitted_data[1],
+    attributes,
+    'Class/ASD',
+    False, False)
+
+# Se valida con el 20%
+print('Resultado de la validación: ', utils.validation(
+    tree_6, splitted_data[0], 'Class/ASD'))

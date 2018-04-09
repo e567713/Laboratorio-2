@@ -1,199 +1,133 @@
 
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.14035087719298245 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.10526315789473684 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.14035087719298245 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.23214285714285715 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.17857142857142858 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.16071428571428573 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.168577694235589
+Error promedio THRESHOLD PROBS: 0.22155388471177942
 
-Error promedio THRESHOLD: 0.21284461152882206
+Error promedio THRESHOLD COMMON: 0.21096491228070174
 
-Error promedio SIMPLE: 0.36544486215538846
+Error promedio GAIN RATIO PROBS: 0.17030075187969923
+
+Error promedio GAIN RATIO COMMON: 0.1738721804511278
+
+Error promedio SIMPLE: 0.36350250626566416
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.14035087719298245 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.19642857142857142 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.2857142857142857 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.1649436090225564
+Error promedio THRESHOLD PROBS: 0.262593984962406
 
-Error promedio THRESHOLD: 0.2075187969924812
+Error promedio THRESHOLD COMMON: 0.24667919799498747
 
-Error promedio SIMPLE: 0.3600563909774437
+Error promedio GAIN RATIO PROBS: 0.16513157894736843
+
+Error promedio GAIN RATIO COMMON: 0.16152882205513783
+
+Error promedio SIMPLE: 0.4079887218045113
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.22807017543859648 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.08771929824561403 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.08928571428571429 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.07142857142857142 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.1452067669172932
+Error promedio THRESHOLD PROBS: 0.17907268170426066
 
-Error promedio THRESHOLD: 0.1949874686716792
+Error promedio THRESHOLD COMMON: 0.18787593984962406
 
-Error promedio SIMPLE: 0.3757518796992481
+Error promedio GAIN RATIO PROBS: 0.13468045112781954
+
+Error promedio GAIN RATIO COMMON: 0.13649749373433584
+
+Error promedio SIMPLE: 0.3651002506265664
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.19298245614035087 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.19298245614035087 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.21428571428571427 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.23214285714285715 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.16071428571428573 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.17719298245614035
+Error promedio THRESHOLD PROBS: 0.21641604010025067
 
-Error promedio THRESHOLD: 0.20037593984962404
+Error promedio THRESHOLD COMMON: 0.21998746867167918
 
-Error promedio SIMPLE: 0.35642230576441103
+Error promedio GAIN RATIO PROBS: 0.16472431077694236
+
+Error promedio GAIN RATIO COMMON: 0.1699248120300752
+
+Error promedio SIMPLE: 0.3670739348370927
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.10526315789473684 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.19298245614035087 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.05357142857142857 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.08928571428571429 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.13280075187969925
+Error promedio THRESHOLD PROBS: 0.20034461152882205
 
-Error promedio THRESHOLD: 0.18085839598997494
+Error promedio THRESHOLD COMMON: 0.19323308270676692
 
-Error promedio SIMPLE: 0.3352756892230576
+Error promedio GAIN RATIO PROBS: 0.14364035087719298
+
+Error promedio GAIN RATIO COMMON: 0.14721177944862154
+
+Error promedio SIMPLE: 0.3385338345864662
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.19298245614035087 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.19298245614035087 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.19642857142857142 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.21428571428571427 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.21428571428571427 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.21428571428571427 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.1826441102756892
+Error promedio THRESHOLD PROBS: 0.20209899749373433
 
-Error promedio THRESHOLD: 0.20588972431077696
+Error promedio THRESHOLD COMMON: 0.2056390977443609
 
-Error promedio SIMPLE: 0.3880952380952381
+Error promedio GAIN RATIO PROBS: 0.1772556390977444
+
+Error promedio GAIN RATIO COMMON: 0.18079573934837095
+
+Error promedio SIMPLE: 0.3406328320802005
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.10526315789473684 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.17857142857142858 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.08928571428571429 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.125 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.12766290726817042
+Error promedio THRESHOLD PROBS: 0.21109022556390977
 
-Error promedio THRESHOLD: 0.18981829573934833
+Error promedio THRESHOLD COMMON: 0.20394736842105265
 
-Error promedio SIMPLE: 0.3435776942355889
+Error promedio GAIN RATIO PROBS: 0.17553258145363407
+
+Error promedio GAIN RATIO COMMON: 0.1702067669172932
+
+Error promedio SIMPLE: 0.3796052631578947
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.2631578947368421 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.08771929824561403 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.21052631578947367 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.17857142857142858 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.08928571428571429 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.16071428571428573 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.15582706766917293
+Error promedio THRESHOLD PROBS: 0.2233082706766917
 
-Error promedio THRESHOLD: 0.19658521303258142
+Error promedio THRESHOLD COMMON: 0.21268796992481204
 
-Error promedio SIMPLE: 0.31741854636591477
+Error promedio GAIN RATIO PROBS: 0.1631892230576441
+
+Error promedio GAIN RATIO COMMON: 0.16676065162907266
+
+Error promedio SIMPLE: 0.3669172932330827
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.24561403508771928 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.19642857142857142 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.07142857142857142 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.08928571428571429 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.17857142857142858 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.15231829573934835
+Error promedio THRESHOLD PROBS: 0.20592105263157895
 
-Error promedio THRESHOLD: 0.2003759398496241
+Error promedio THRESHOLD COMMON: 0.19514411027568923
 
-Error promedio SIMPLE: 0.3632518796992481
+Error promedio GAIN RATIO PROBS: 0.14711779448621554
+
+Error promedio GAIN RATIO COMMON: 0.14536340852130325
+
+Error promedio SIMPLE: 0.3229010025062657
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.14035087719298245 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.12280701754385964 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.17543859649122806 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.16071428571428573 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.25 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.16071428571428573 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.15247493734335837
+Error promedio THRESHOLD PROBS: 0.21278195488721807
 
-Error promedio THRESHOLD: 0.21271929824561403
+Error promedio THRESHOLD COMMON: 0.20748746867167914
 
-Error promedio SIMPLE: 0.32810150375939856
+Error promedio GAIN RATIO PROBS: 0.13295739348370925
+
+Error promedio GAIN RATIO COMMON: 0.13828320802005012
+
+Error promedio SIMPLE: 0.3424185463659148
 ------------------------------------------------------------
 10-fold cross-validation
-Proporción de errores iteración 0: 0.15789473684210525 sobre un validation set de tamaño: 57
-Proporción de errores iteración 1: 0.22807017543859648 sobre un validation set de tamaño: 57
-Proporción de errores iteración 2: 0.07017543859649122 sobre un validation set de tamaño: 57
-Proporción de errores iteración 3: 0.10526315789473684 sobre un validation set de tamaño: 57
-Proporción de errores iteración 4: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 5: 0.14285714285714285 sobre un validation set de tamaño: 56
-Proporción de errores iteración 6: 0.10714285714285714 sobre un validation set de tamaño: 56
-Proporción de errores iteración 7: 0.05357142857142857 sobre un validation set de tamaño: 56
-Proporción de errores iteración 8: 0.125 sobre un validation set de tamaño: 56
-Proporción de errores iteración 9: 0.125 sobre un validation set de tamaño: 56
 
-Error promedio GAIN RATIO: 0.12221177944862154
+Error promedio THRESHOLD PROBS: 0.19498746867167915
 
-Error promedio THRESHOLD: 0.20560776942355888
+Error promedio THRESHOLD COMMON: 0.20372807017543856
 
-Error promedio SIMPLE: 0.3795426065162908
+Error promedio GAIN RATIO PROBS: 0.143703007518797
+
+Error promedio GAIN RATIO COMMON: 0.13662280701754387
+
+Error promedio SIMPLE: 0.36359649122807014
