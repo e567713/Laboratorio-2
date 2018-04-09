@@ -36,6 +36,8 @@ S3 = [
         'Humedad': 'Media', 'Humor Docente': 'Malo', 'Salva': 'Yes'},
     {'Dedicacion': 'Media', 'Dificultad': '?', 'Horario': 'Matutino',
         'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'No'},
+    {'Dedicacion': 'Baja', 'Dificultad': '?', 'Horario': 'Matutino',
+        'Humedad': 'Media', 'Humor Docente': 'Bueno', 'Salva': 'Yes'},
 ]
 
 
@@ -46,19 +48,19 @@ print('')
 print('Aplicacion de ID3 al ejemplo visto en el teórico')
 print('')
 
-S_entropy = utils.entropy(S, 'Salva')
-print('Entropía del conjunto: ', S_entropy)
+# S_entropy = utils.entropy(S, 'Salva')
+# print('Entropía del conjunto: ', S_entropy)
 
-S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva', False)
-print('Information gain del atributo Dedicación: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva', False)
-print('Information gain del atributo Humor Docente: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Horario', 'Salva', False)
-print('Information gain del atributo Horario: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Dificultad', 'Salva', False)
-print('Information gain del atributo Dificultad: ', S_information_gain)
-S_information_gain = utils.information_gain(S, 'Humedad', 'Salva', False)
-print('Information gain del atributo Humedad: ', S_information_gain)
+# S_information_gain = utils.information_gain(S, 'Dedicacion', 'Salva', False)
+# print('Information gain del atributo Dedicación: ', S_information_gain)
+# S_information_gain = utils.information_gain(S, 'Humor Docente', 'Salva', False)
+# print('Information gain del atributo Humor Docente: ', S_information_gain)
+# S_information_gain = utils.information_gain(S, 'Horario', 'Salva', False)
+# print('Information gain del atributo Horario: ', S_information_gain)
+# S_information_gain = utils.information_gain(S, 'Dificultad', 'Salva', False)
+# print('Information gain del atributo Dificultad: ', S_information_gain)
+# S_information_gain = utils.information_gain(S, 'Humedad', 'Salva', False)
+# print('Information gain del atributo Humedad: ', S_information_gain)
 
 tree = utils.ID3_algorithm(
     S,
@@ -132,20 +134,30 @@ attributes = ['A1_Score',
 
 # Primera solución implementada
 print('Utilizando thresholds')
+print()
 tree_2 = utils.ID3_algorithm_with_threshold(
     data_set,
     attributes,
     'Class/ASD',
     ['age'], False)
-print()
+
+utils.print_tree(tree_2, tree_2['data'], None, True, '')
 
 print('Utilizando gain ratio')
+print()
 # Segunda solución implementada
 tree_3 = utils.ID3_algorithm(
     data_set,
     attributes,
     'Class/ASD',
     False, False)
+utils.print_tree(tree_3, tree_3['data'], None, True, '')
+
+print()
+print('Aplicacion de ID3 extendido para manejar valores faltantes')
+print()
+print('Más común')
+print('')
 
 # Primera solución implementada valores faltantes
 tree_4 = utils.ID3_algorithm(
@@ -153,16 +165,19 @@ tree_4 = utils.ID3_algorithm(
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
     False, False)
-# utils.print_tree(tree_4, tree_4['data'], None, True, '')
+utils.print_tree(tree_4, tree_4['data'], None, True, '')
 
-
+print()
+print()
+print('Probabilidades')
+print('')
 # Segunda solución implementada valores faltantes
 tree_5 = utils.ID3_algorithm(
     S3,
     ['Dedicacion', 'Dificultad', 'Horario', 'Humedad', 'Humor Docente'],
     'Salva',
     False, True)
-# utils.print_tree(tree_5, tree_5['data'], None, True, '')
+utils.print_tree(tree_5, tree_5['data'], None, True, '')
 
 print('')
 print('')
@@ -194,7 +209,7 @@ print('Tamaño del subset de entrenamiento: ', str(len(splitted_data[1])))
 print()
 
 file = open('5c_comparacion.txt', 'a')
-for i in range(2):
+for i in range(10000):
   	
     # Parte 1
     print('Parte 1')
